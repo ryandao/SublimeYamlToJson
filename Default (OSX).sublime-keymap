@@ -1,0 +1,14 @@
+[
+    {
+        "keys": [
+            "ctrl+y", "ctrl+j"
+        ],
+        "command": "yaml_to_json"
+    },
+    {
+        "keys": [
+            "ctrl+j", "ctrl+y"
+        ],
+        "command": "json_to_yaml"
+    }
+]
