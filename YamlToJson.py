@@ -1,5 +1,11 @@
 import sublime, sublime_plugin, platform, json
-from . import yaml
+
+try:
+  # For Sublime Test 3
+  from . import yaml3 as yaml
+except ValueError:
+  # For Sublime Test 2
+  import yaml2 as yaml
 
 class BaseCommand(sublime_plugin.TextCommand):
   def get_selections(self):
@@ -34,7 +40,7 @@ class JsonToYamlCommand(BaseCommand):
     for selection in self.get_selections():
       try:
         result = json.loads(self.view.substr(selection))
-        yaml_str = yaml.dump(
+        yaml_str = yaml.safe_dump(
           result,
           indent=2,
           default_flow_style=False,
